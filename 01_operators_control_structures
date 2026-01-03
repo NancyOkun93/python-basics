@@ -1,0 +1,208 @@
+"""
+#01 Operators and Control Structures (Python)
+Official website: https://www.python.org/
+
+Goal:
+- Demonstrate operator types: arithmetic, logical, comparison, assignment, identity, membership, bitwise
+- Demonstrate control structures: conditionals, loops, exceptions
+- Print results for every example
+"""
+
+# ----------------------------
+# Setup
+# ----------------------------
+a = 1
+b = 2
+print("Given variables a=1 and b=2:\n")
+
+# TIP: Operator precedence matters (parentheses help readability)
+# Example: (a + b) * 3 is different than a + (b * 3)
+
+# ----------------------------
+# 1) ARITHMETIC OPERATORS
+# ----------------------------
+sum_result = a + b
+subtraction = a - b
+multiplication = a * b
+division = a / b            # always float in Python 3
+modulo = a % b              # remainder
+floor_division = a // b     # integer (floor) division
+exponentiation = a ** b
+
+print(f"""Arithmetic operations:
+  a + b  = {sum_result}
+  a - b  = {subtraction}
+  a * b  = {multiplication}
+  a / b  = {division}
+  a % b  = {modulo}
+  a // b = {floor_division}
+  a ** b = {exponentiation}
+""")
+
+# ----------------------------
+# 2) LOGICAL OPERATORS
+# ----------------------------
+# IMPORTANT:
+# In Python, `and` / `or` return one of the operands, not strictly True/False.
+# Example: 1 and 2 returns 2, because 1 is "truthy" so it returns the second operand.
+# To force boolean results, wrap in bool() or use comparisons.
+
+logical_and_operand = a and b
+logical_or_operand = a or b
+logical_not = not a
+
+# Boolean versions (recommended for learning logic):
+logical_and_bool = (a > 0) and (b > 0)
+logical_or_bool = (a == 0) or (b == 2)
+
+print(f"""Logical operations:
+  a and b (operand result) = {logical_and_operand}
+  a or b  (operand result) = {logical_or_operand}
+  not a                   = {logical_not}
+
+Boolean logic examples:
+  (a > 0) and (b > 0) = {logical_and_bool}
+  (a == 0) or (b == 2) = {logical_or_bool}
+""")
+
+# ----------------------------
+# 3) COMPARISON OPERATORS
+# ----------------------------
+greater_than = a > b
+greater_or_equal = a >= b
+less_than = a < b
+less_or_equal = a <= b
+equal = a == b
+not_equal = a != b
+
+print(f"""Comparison operations:
+  a >  b  = {greater_than}
+  a >= b  = {greater_or_equal}
+  a <  b  = {less_than}
+  a <= b  = {less_or_equal}
+  a == b  = {equal}
+  a != b  = {not_equal}
+""")
+
+# ----------------------------
+# 4) ASSIGNMENT OPERATORS
+# ----------------------------
+# IMPORTANT:
+# These change the variable value in-place. We'll use a copy so earlier values stay consistent.
+
+x = a
+print("Assignment operators (starting with x = a):")
+print("  x =", x)
+
+x += b
+print("  x += b ->", x)
+
+x -= b
+print("  x -= b ->", x)
+
+x *= b
+print("  x *= b ->", x)
+
+# You can also do: x /= b, x //= b, x %= b, x **= b
+print()
+
+# ----------------------------
+# 5) IDENTITY OPERATORS (is / is not)
+# ----------------------------
+# IMPORTANT:
+# `is` checks if they are the SAME OBJECT in memory, not if values are equal.
+# Use `==` for value comparison.
+#
+# Good use of `is`: checking None
+
+p = None
+print(f"""Identity operators:
+  p is None      = {p is None}
+  a == b         = {a == b}   (value comparison)
+  a is b         = {a is b}   (object identity, not recommended for numbers/strings)
+""")
+
+# ----------------------------
+# 6) MEMBERSHIP OPERATORS (in / not in)
+# ----------------------------
+animal_a = "cat"
+animal_b = "dog"
+
+in_result = animal_a in animal_b
+not_in_result = animal_a not in animal_b
+
+print(f"""Membership operators:
+  '{animal_a}' in '{animal_b}'      = {in_result}
+  '{animal_a}' not in '{animal_b}'  = {not_in_result}
+
+Extra membership examples:
+  'o' in 'dog' = {'o' in 'dog'}
+  3 in [1,2,3] = {3 in [1,2,3]}
+""")
+
+# ----------------------------
+# 7) BITWISE OPERATORS (binary level)
+# ----------------------------
+a = 1  # 0001
+b = 2  # 0010
+
+bit_and = a & b
+bit_or = a | b
+bit_not = ~a
+bit_xor = a ^ b
+bit_shift_left = a << 1
+bit_shift_right = b >> 1
+
+print(f"""Bitwise operations (work on binary):
+  a & b   = {bit_and}
+  a | b   = {bit_or}
+  ~a      = {bit_not}
+  a ^ b   = {bit_xor}
+  a << 1  = {bit_shift_left}
+  b >> 1  = {bit_shift_right}
+""")
+
+# ----------------------------
+# CONTROL STRUCTURES
+# ----------------------------
+
+# 1) CONDITIONALS (if / elif / else)
+if a < b:
+    print("Conditional: a is less than b")
+elif a > b:
+    print("Conditional: a is greater than b")
+else:
+    print("Conditional: a and b must be equal")
+print()
+
+# 2) FOR LOOP
+for i in range(1, 4):
+    print(f"For loop: iteration {i}")
+print()
+
+# 3) WHILE LOOP
+i = 0
+while i < 5:
+    print(f"While loop: iteration {i}")
+    i += 1
+print()
+
+# 4) EXCEPTIONS (try / except)
+# IMPORTANT: handle errors instead of crashing the program.
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Exception example: You cannot divide by zero.")
+print()
+
+# ----------------------------
+# EXTRA CHALLENGE
+# Print numbers between 10 and 55 inclusive:
+# - even
+# - not 16
+# - not multiples of 3
+# ----------------------------
+print("Extra challenge results (10 to 55, even, not 16, not multiples of 3):")
+for n in range(10, 56):
+    if (n % 2 == 0) and (n != 16) and (n % 3 != 0):
+        print(n)
